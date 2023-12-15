@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>애국가</h1>
+  <form action="#">
+    <textarea name="anthem" id="anthem" rows="20" cols="50"></textarea>
+    <input type="submit" value="입력">
+  </form>
+</body>
+<script>
+  // 애국가 정규식
+  const anthemRegex = /^(동해물과 백두산이) (마르고 닳도록) (하느님이 보우하사) (우리나라 만세) (무궁화 삼천리) (영광스러운 대한 민국) (백두산이) (마르고 닳도록) (하느님이 보우하사) (우리나라 만세)$/;
+
+  // 애국가 입력 이벤트 핸들러
+  document.getElementById("anthem").addEventListener("keydown", (event) => {
+    if (event.keyCode === 13) {
+      // 애국가 입력값 확인
+      const anthem = document.querySelector("#anthem").value;
+      if (anthemRegex.test(anthem)) {
+        // hashchange로 <body> 내부 재구성
+        window.location.hash = anthem;
+      }
+    }
+  });
+</script>
+</html>
